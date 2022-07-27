@@ -3,6 +3,7 @@
     <base-card mode="shadow">
       <div class="bg-indigo-400 h-8 rounded-lg"></div>
     </base-card>
+    <base-badge field="frontend" type="frontend"></base-badge>
   </div>
 </template>
 
