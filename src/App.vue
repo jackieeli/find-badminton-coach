@@ -4,6 +4,7 @@
       <div class="bg-indigo-400 h-8 rounded-lg"></div>
     </base-card>
     <base-badge field="frontend" type="frontend"></base-badge>
+    <base-dialog show title="hello"></base-dialog>
   </div>
 </template>
 
