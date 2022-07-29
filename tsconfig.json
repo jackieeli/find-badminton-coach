@@ -21,7 +21,7 @@
     "src/store/modules/auth/mutations.js",
     "src/store/modules/auth/index.js",
     "src/store/modules/auth/getters.js",
-    "src/store/modules/auth/actions.js"
+    "src/store/modules/auth/actions.ts"
   ],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
