@@ -1,15 +1,15 @@
 <template>
-  <div>
-    <base-card mode="shadow">
-      <div class="bg-indigo-400 h-8 rounded-lg"></div>
-    </base-card>
-    <base-badge field="frontend" type="frontend"></base-badge>
-    <base-dialog show title="hello"></base-dialog>
-  </div>
+  <the-header></the-header>
 </template>
 
 <script lang="ts">
-export default {};
+import TheHeader from './components/layout/TheHeader.vue';
+
+export default {
+  components: {
+    TheHeader,
+  },
+};
 </script>
 
 <style>
@@ -32,5 +32,61 @@ export default {};
   --font-display: 'Fugaz One', cursive;
 
   --max-width: 144rem;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+  font-family: var(--font-primary);
+  font-size: 62.5%;
+  background: var(--white-2);
+  overflow-y: overlay;
+}
+
+body {
+  font-size: 1.6rem;
+  color: var(--purple-4);
+}
+
+p {
+  color: var(--purple-4);
+}
+
+section {
+  width: 100%;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+ul {
+  list-style: none;
+}
+
+button {
+  font: inherit;
+}
+
+.row {
+  max-width: var(--max-width);
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 1.6rem;
+}
+
+a {
+  text-decoration: none;
 }
 </style>
