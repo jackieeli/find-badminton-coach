@@ -1,13 +1,16 @@
 <template>
   <the-header></the-header>
+  <coach-filter @change-filter="showFilter"></coach-filter>
 </template>
 
 <script lang="ts">
 import TheHeader from './components/layout/TheHeader.vue';
+import CoachFilter from './components/coaches/CoachFilter.vue';
 
 export default {
   components: {
     TheHeader,
+    CoachFilter,
   },
 };
 </script>
