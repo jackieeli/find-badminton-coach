@@ -2,12 +2,17 @@ import { createApp } from 'vue';
 import './style.css';
 import App from './App.vue';
 
+import store from './store';
+import router from './routes';
+
 import BaseCard from './components/UI/BaseCard.vue';
 import BaseButton from './components/UI/BaseButton.vue';
 import BaseBadge from './components/UI/BaseBadge.vue';
 import BaseDialog from './components/UI/BaseDialog.vue';
 
 const app = createApp(App);
+
+app.use(store);
 
 app.component('base-card', BaseCard);
 app.component('base-button', BaseButton);
