@@ -1,16 +1,19 @@
 <template>
-  <the-header></the-header>
+  <TheHeader />
   <coach-filter @change-filter="showFilter"></coach-filter>
+  <!-- <CoachForm @save-data="savedData" /> -->
 </template>
 
 <script lang="ts">
 import TheHeader from './components/layout/TheHeader.vue';
 import CoachFilter from './components/coaches/CoachFilter.vue';
+// import CoachForm from './components/coaches/CoachForm.vue';
 
 export default {
   components: {
     TheHeader,
     CoachFilter,
+    // CoachForm,
   },
 };
 </script>
