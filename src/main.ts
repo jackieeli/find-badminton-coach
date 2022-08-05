@@ -13,6 +13,7 @@ import BaseDialog from './components/UI/BaseDialog.vue';
 const app = createApp(App);
 
 app.use(store);
+app.use(router);
 
 app.component('base-card', BaseCard);
 app.component('base-button', BaseButton);
