@@ -1,19 +1,35 @@
 <template>
   <TheHeader />
-  <coach-filter @change-filter="showFilter"></coach-filter>
-  <!-- <CoachForm @save-data="savedData" /> -->
+  <router-view v-slot="{ Component }">
+    <transition name="route" mode="out-in">
+      <component :is="Component"></component>
+    </transition>
+  </router-view>
 </template>
 
-<script lang="ts">
+<script>
 import TheHeader from './components/layout/TheHeader.vue';
-import CoachFilter from './components/coaches/CoachFilter.vue';
-// import CoachForm from './components/coaches/CoachForm.vue';
 
 export default {
   components: {
     TheHeader,
-    CoachFilter,
-    // CoachForm,
+  },
+  computed: {
+    didAutoLogout() {
+      return this.$store.getters.didAutoLogout;
+    },
+  },
+  watch: {
+    didAutoLogout(curValue, oldValue) {
+      // automatically redirect user if auto logged out if didAutoLogout
+      // changes to true
+      if (curValue && curValue !== oldValue) {
+        this.$router.replace({ name: 'coaches' });
+      }
+    },
+  },
+  created() {
+    this.$store.dispatch('tryLogin');
   },
 };
 </script>
@@ -94,5 +110,36 @@ button {
 
 a {
   text-decoration: none;
+}
+
+.route-enter-from {
+  opacity: 0;
+  transform: translateY(-30px);
+}
+
+.route-leave-to {
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.route-enter-active {
+  transition: all 250ms ease-out;
+}
+
+.route-leave-active {
+  transition: all 250ms ease-in;
+}
+
+body::-webkit-scrollbar {
+  width: 4px; /* width of the entire scrollbar */
+}
+
+body::-webkit-scrollbar-track {
+  background: transparent; /* color of the tracking area */
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: var(--gray-2); /* color of the scroll thumb */
+  border-radius: 2rem; /* roundness of the scroll thumb */
 }
 </style>
