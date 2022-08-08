@@ -23,8 +23,8 @@ export default {
     to: {
       type: Object,
       required: false,
-      default: () => {
-        'home';
+      default() {
+        return { name: 'home' };
       },
     },
   },
@@ -38,8 +38,8 @@ a {
   padding: 0.5em 1em;
   font-size: 1.4rem;
   font-family: var(--font-display);
-  background-color: var(--purple-2);
   color: var(--white-2);
+  background-color: var(--purple-2);
   border: 0.2rem solid transparent;
   border-radius: 0.8rem;
   display: inline-block;

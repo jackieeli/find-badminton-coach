@@ -14,12 +14,12 @@ export default {
 .card {
   padding: 2rem;
   padding-bottom: 2.2rem;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 60rem;
   background: var(--white-1);
   border: 0.3rem solid var(--gray-2);
   border-radius: 1.2rem;
-  max-width: 60rem;
-  width: 100%;
-  margin: 0 auto;
 }
 
 .full {
