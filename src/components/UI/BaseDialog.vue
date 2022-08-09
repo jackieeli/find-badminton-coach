@@ -1,6 +1,6 @@
 <template>
   <teleport to="body">
-    <div v-if="show" @click="tryClose" class="backdrop"></div>
+    <div v-if="show" class="backdrop" @click="tryClose"></div>
     <transition name="dialog">
       <dialog open v-if="show">
         <header>
@@ -40,7 +40,7 @@ const props = defineProps({
 });
 
 const tryClose = () => {
-  props.fixed && emits('close');
+  !props.fixed && emits('close');
 };
 </script>
 
@@ -60,13 +60,11 @@ dialog {
   position: fixed;
   top: 20vh;
   margin: 0 auto;
-  max-width: 50rem;
   width: 90%;
+  max-width: 50rem;
   z-index: 100;
   overflow: hidden;
-
   border-radius: 1.2rem;
-  border: none;
   border: 0.3rem solid var(--purple-1);
 }
 
@@ -104,7 +102,7 @@ menu {
 }
 
 .dialog-enter-active {
-  transition: all 250ms;
+  transition: all 250ms ease-out;
 }
 
 .dialog-leave-active {

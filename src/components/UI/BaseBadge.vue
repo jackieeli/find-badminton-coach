@@ -16,20 +16,19 @@ const field = computed(() => text.toUpperCase());
 
 <style scoped>
 .badge {
-  background-color: #ccc;
-  color: #252525;
-  border-radius: 100rem;
   padding: 0.5em 1.2em;
+  font-size: 1rem;
+  color: #252525;
+  font-weight: bold;
+  background-color: #ccc;
+  border-radius: 100rem;
   display: inline-block;
   margin-right: 0.5rem;
-  font-size: 1rem;
-  font-weight: bold;
 }
 .frontend {
   background-color: #3d008d;
   color: white;
 }
-
 .backend {
   background-color: #71008d;
   color: white;
