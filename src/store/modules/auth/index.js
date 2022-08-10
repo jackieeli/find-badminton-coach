@@ -8,7 +8,8 @@ export default {
       userID: '',
       token: '',
       didAutoLogout: false,
-      API_KEY: 'xxx-xxx', // waiting for the real value.
+      authUrl: 'http://localhost:3000', // the server should be run first
+      API_KEY: 'Jackie-loves-Candy', // for the auth
     };
   },
   mutations,

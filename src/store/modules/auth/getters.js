@@ -8,6 +8,9 @@ export default {
   isAuthenticated(state) {
     return !!state.token;
   },
+  authUrl(state) {
+    return state.authUrl;
+  },
   apiKey(state) {
     return state.API_KEY;
   },

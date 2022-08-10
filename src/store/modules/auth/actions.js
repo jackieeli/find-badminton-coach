@@ -17,14 +17,13 @@ export default {
     });
   },
   async auth(context, payload) {
+    const authUrl = context.getters.authUrl;
     const apiKey = context.getters.apiKey;
     const mode = payload.mode;
 
-    let url = `https://identitytoolkit.googleapis.com/
-      v1/accounts:signInWithPassword?key=${apiKey}`;
+    let url = `${authUrl}/signInWithPassword?key=${apiKey}`;
     if (mode === 'signup') {
-      url = `https://identitytoolkit.googleapis.com/
-        v1/accounts:signUp?key=${apiKey}`;
+      url = `${authUrl}/signUp?key=${apiKey}`;
     }
 
     try {
@@ -34,7 +33,7 @@ export default {
         returnSecureToken: true,
       });
 
-      const expiresIn = +responseData.expiresIn * 1000;
+      const expiresIn = +responseData.expiresIn.slice(0, -1) * 1000; // '600s' -> 600 * 1000
       const expirationDate = Date.now() + expiresIn;
 
       localStorage.setItem('token', responseData.idToken);
