@@ -11,7 +11,8 @@ const store = createStore({
   },
   state() {
     return {
-      databaseUrl: 'xxx-xxx.firebaseio.com', /// waiting for the real url...
+      databaseUrl:
+        'https://find-badminton-coach-default-rtdb.asia-southeast1.firebasedatabase.app', // waiting for the real url...
     };
   },
   mutations: {},

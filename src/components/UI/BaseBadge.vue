@@ -9,9 +9,11 @@ import { computed, ref } from 'vue';
 
 const props = defineProps(['type', 'field']);
 const type = ref(props.type as string);
-const text = props.field as string;
+const text = ref(props.field as string);
 
-const field = computed(() => text.toUpperCase());
+const field = computed(() => {
+  return text.value && text.value.toUpperCase();
+});
 </script>
 
 <style scoped>

@@ -8,7 +8,7 @@
           v-for="area in areas"
           :key="area"
           :type="area"
-          :title="area"
+          :field="area"
         ></base-badge>
       </div>
       <div class="actions">

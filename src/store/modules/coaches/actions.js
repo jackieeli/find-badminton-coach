@@ -12,13 +12,10 @@ export default {
     };
 
     const databaseUrl = context.rootGetters.databaseUrl;
-    const token = context.rootGetters.token;
+    // const token = context.rootGetters.token;
 
     try {
-      await axios.put(
-        `${databaseUrl}/coaches/${userID}.json?auth=${token}`,
-        coachData
-      );
+      await axios.put(`${databaseUrl}/coaches/${userID}.json`, coachData);
 
       context.commit('registerCoach', {
         ...coachData,
@@ -51,12 +48,14 @@ export default {
         };
         coaches.push(coach);
       }
+
       context.commit('setCoaches', coaches);
       context.commit('setFetchTimestamp');
     } catch (err) {
-      console.log(err.response);
-      const error = new Error(err.response.data.error || 'Failed to fetch');
-      throw error;
+      // console.log(err.response);
+      // const error = new Error(err.response.data.error || 'Failed to fetch');
+      // throw error;
+      console.log(err);
     }
   },
 };

@@ -39,7 +39,7 @@ export default {
         [inputID]: isActive,
       };
       this.filters = updateFilters;
-      this.$emits('change-filter', updateFilters);
+      this.$emit('change-filter', updateFilters);
     },
   },
 };
