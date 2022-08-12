@@ -2,7 +2,7 @@
   <h4>
     <ion-icon name="logo-usd"></ion-icon>
     <span class="price">{{ rate }}</span>
-    <span class="per">/hour</span>
+    <span class="per">/小时</span>
   </h4>
 </template>
 
@@ -34,6 +34,6 @@ h4 .per {
   font-size: 1.4rem;
   margin-left: 0.4rem;
   margin-top: 0.1rem;
-  font-weight: normal;
+  font-weight: bold;
 }
 </style>

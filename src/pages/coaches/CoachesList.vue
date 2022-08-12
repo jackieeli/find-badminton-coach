@@ -8,7 +8,7 @@
         <base-card mode="flat">
           <div class="controls">
             <base-button mode="flat" @click="loadCoaches(true)">
-              Refresh
+              刷新
             </base-button>
             <base-button
               v-if="!isLoggedIn"
@@ -18,14 +18,14 @@
                 query: { redirect: 'register' },
               }"
             >
-              Login to register as coach
+              登录以注册成为教练
             </base-button>
             <base-button
               v-if="isLoggedIn && !isCoach && !isLoading"
               link
               :to="{ name: 'register' }"
             >
-              Register as coach
+              成为教练
             </base-button>
           </div>
         </base-card>
@@ -65,9 +65,11 @@ export default {
       isLoading: false,
       error: null,
       activeFilters: {
-        frontend: true,
-        backend: true,
-        career: true,
+        single: true,
+        double: true,
+        beginner: true,
+        intermediate: true,
+        advanced: true,
       },
     };
   },

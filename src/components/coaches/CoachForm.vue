@@ -1,85 +1,101 @@
 <template>
   <form @submit.prevent="submitForm">
     <div class="form-control" :class="styleInvalid(firstName)">
-      <label for="firstname">First name</label>
+      <label for="firstname">姓</label>
       <input
         type="text"
         id="firstname"
         v-model.trim="firstName.val"
         @blur="clearValidity(firstName)"
       />
-      <p v-if="!firstName.isValid">First name must not be empty</p>
+      <p v-if="!firstName.isValid">姓氏不能为空</p>
     </div>
     <div class="form-control" :class="styleInvalid(lastName)">
-      <label for="lastname">Last name</label>
+      <label for="lastname">名</label>
       <input
         type="text"
         id="lastname"
         v-model.trim="lastName.val"
         @blur="clearValidity(lastName)"
       />
-      <p v-if="!lastName.isValid">Last name must not be empty</p>
+      <p v-if="!lastName.isValid">名字不能为空</p>
     </div>
     <div class="form-control" :class="styleInvalid(description)">
-      <label for="description">Description</label>
+      <label for="description">个人描述</label>
       <textarea
         id="description"
         rows="5"
         v-model.trim="description.val"
         @blur="clearValidity(description)"
       ></textarea>
-      <p v-if="!description.isValid">Description must not be empty</p>
+      <p v-if="!description.isValid">个人描述不能为空</p>
     </div>
     <div class="form-control" :class="styleInvalid(rate)">
-      <label for="rate">Hourly rate</label>
+      <label for="rate">小时费</label>
       <input
         type="number"
         id="rate"
         v-model.number="rate.val"
         @blur="clearValidity(rate)"
       />
-      <p v-if="!rate.isValid">
-        Rate must not be empty and be greater than zero
-      </p>
+      <p v-if="!rate.isValid">小时费不能为空, 且需大于0</p>
     </div>
     <div class="form-control checkboxes" :class="styleInvalid(areas)">
-      <h3>Areas of expertise</h3>
+      <h3>精通领域</h3>
       <div>
         <input
           type="checkbox"
-          id="frontend"
-          value="frontend"
+          id="single"
+          value="single"
           v-model="areas.val"
           @blur="clearValidity(areas)"
         />
-        <label for="frontend">Frontend development</label>
+        <label for="single">单打</label>
       </div>
       <div>
         <input
           type="checkbox"
-          id="backend"
-          value="backend"
+          id="double"
+          value="double"
           v-model="areas.val"
           @blur="clearValidity(areas)"
         />
-        <label for="backend">Backend development</label>
+        <label for="double">双打</label>
       </div>
       <div>
         <input
           type="checkbox"
-          id="career"
-          value="career"
+          id="beginner"
+          value="beginner"
           v-model="areas.val"
           @blur="clearValidity(areas)"
         />
-        <label for="career">Career advisory</label>
+        <label for="beginner">初级</label>
       </div>
-      <p v-if="!areas.isValid">At least one area must be selected.</p>
+      <div>
+        <input
+          type="checkbox"
+          id="intermediate"
+          value="intermediate"
+          v-model="areas.val"
+          @blur="clearValidity(areas)"
+        />
+        <label for="intermediate">中级</label>
+      </div>
+      <div>
+        <input
+          type="checkbox"
+          id="advanced"
+          value="advanced"
+          v-model="areas.val"
+          @blur="clearValidity(areas)"
+        />
+        <label for="advanced">高级</label>
+      </div>
+      <p v-if="!areas.isValid">需要至少选择一个领域</p>
     </div>
-    <p v-if="!formIsValid" class="errors">
-      Please fix the above errors and submit again
-    </p>
-    <base-button class="submit-btn">Register</base-button>
+    <p v-if="!formIsValid" class="errors">请您修正错误，然后重新提交！</p>
+    <base-button class="submit-btn">注册</base-button>
   </form>
 </template>
 
