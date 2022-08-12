@@ -1,18 +1,26 @@
 <template>
   <base-card mode="full" color="color">
-    <h2>Find your coach</h2>
+    <h2>筛选您想选择的教练类别</h2>
     <div class="filters">
       <span class="filter-option">
-        <input type="checkbox" id="frontend" checked @change="setFilter" />
-        <label for="frontend">Frontend</label>
+        <input type="checkbox" id="single" checked @change="setFilter" />
+        <label for="single">单打 (single)</label>
       </span>
       <span class="filter-option">
-        <input type="checkbox" id="backend" checked @change="setFilter" />
-        <label for="backend">Backend</label>
+        <input type="checkbox" id="double" checked @change="setFilter" />
+        <label for="double">双打 (double)</label>
       </span>
       <span class="filter-option">
-        <input type="checkbox" id="career" checked @change="setFilter" />
-        <label for="career">Career</label>
+        <input type="checkbox" id="beginner" checked @change="setFilter" />
+        <label for="beginner">初级 (beginner)</label>
+      </span>
+      <span class="filter-option">
+        <input type="checkbox" id="intermediate" checked @change="setFilter" />
+        <label for="intermediate">中级 (intermediate)</label>
+      </span>
+      <span class="filter-option">
+        <input type="checkbox" id="advanced" checked @change="setFilter" />
+        <label for="advanced">高级 (advanced)</label>
       </span>
     </div>
   </base-card>
@@ -24,9 +32,11 @@ export default {
   data() {
     return {
       filters: {
-        frontend: true,
-        backend: true,
-        career: true,
+        single: true,
+        double: true,
+        beginner: true,
+        intermediate: true,
+        advanced: true,
       },
     };
   },
@@ -54,6 +64,7 @@ h2 {
 
 .filters {
   display: flex;
+  flex-wrap: wrap;
   gap: 1.6rem;
 }
 

@@ -4,24 +4,24 @@
       <nav>
         <h1>
           <router-link :to="{ name: 'home' }" id="brand-title">
-            Coachew
+            🏸️ 找羽毛球教练啦～
           </router-link>
         </h1>
         <ul>
           <li v-if="isLoggedIn">您好，{{ username }}</li>
           <li>
-            <base-button :to="{ name: 'coaches' }" link> Coaches </base-button>
-          </li>
-          <li v-if="isLoggedIn">
-            <base-button link :to="{ name: 'requests' }">
-              Requests
+            <base-button :to="{ name: 'coaches' }" link>
+              教练员列表
             </base-button>
           </li>
+          <li v-if="isLoggedIn">
+            <base-button link :to="{ name: 'requests' }"> 收件箱 </base-button>
+          </li>
           <li v-else>
-            <base-button :to="{ name: 'auth' }" link> Login </base-button>
+            <base-button link :to="{ name: 'auth' }">登录</base-button>
           </li>
           <li v-if="isLoggedIn">
-            <base-button @click="logout">Logout</base-button>
+            <base-button @click="logout">退出登录</base-button>
           </li>
         </ul>
       </nav>
