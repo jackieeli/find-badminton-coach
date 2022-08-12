@@ -30,6 +30,7 @@ export default {
       const { data: responseData } = await axios.post(url, {
         email: payload.email,
         password: payload.password,
+        username: payload.username,
         returnSecureToken: true,
       });
 
@@ -38,6 +39,10 @@ export default {
 
       localStorage.setItem('token', responseData.idToken);
       localStorage.setItem('userID', responseData.localId);
+      localStorage.setItem(
+        'username',
+        `${responseData.firstName} ${responseData.lastName}`
+      );
       localStorage.setItem('tokenExpiration', expirationDate);
 
       timer = setTimeout(() => {
@@ -47,6 +52,7 @@ export default {
       context.commit('setUser', {
         token: responseData.idToken,
         userID: responseData.localId,
+        username: `${responseData.firstName} ${responseData.lastName}`,
       });
     } catch (err) {
       const error = new Error(
@@ -59,6 +65,7 @@ export default {
   tryLogin(context) {
     const token = localStorage.getItem('token');
     const userID = localStorage.getItem('userID');
+    const username = localStorage.getItem('username');
     const tokenExpiration = localStorage.getItem('tokenExpiration');
 
     // how much time is left till expiring
@@ -76,12 +83,14 @@ export default {
       context.commit('setUser', {
         token,
         userID,
+        username,
       });
     }
   },
   logout(context) {
     localStorage.removeItem('token');
     localStorage.removeItem('userID');
+    localStorage.removeItem('username');
     localStorage.removeItem('tokenExpiration');
 
     clearTimeout(timer);

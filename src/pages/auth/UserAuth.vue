@@ -13,33 +13,41 @@
         <form @submit.prevent="submitForm">
           <div class="form-control">
             <transition name="title" mode="out-in">
-              <h2 v-if="mode === 'login'">Login</h2>
-              <h2 v-else>Signup</h2>
+              <h2 v-if="mode === 'login'">登录</h2>
+              <h2 v-else>注册</h2>
             </transition>
           </div>
           <div class="form-control">
-            <label for="email">Email</label>
+            <label for="email">电子邮箱</label>
             <input type="email" id="email" v-model.trim="email" />
           </div>
           <div class="form-control">
-            <label for="password">password</label>
+            <label for="password">密码</label>
             <input type="password" id="password" v-model.trim="password" />
           </div>
+          <div v-if="mode === 'signup'" class="form-control">
+            <label for="username">用户名</label>
+            <input
+              type="text"
+              id="username"
+              v-model.trim="username"
+              placeholder="姓与名之间用空格分开，如（林郑 月娥）"
+            />
+          </div>
           <p v-if="!formIsValid">
-            Please enter a valid email and password (must be at least 6
-            characters long
+            请您输入合法的电子邮箱、密码和用户名 (密码最少为6位)
           </p>
           <div class="action">
             <transition name="btn" mode="out-in">
-              <base-button v-if="mode === 'login'">Login</base-button>
+              <base-button v-if="mode === 'login'">登录</base-button>
               <base-button v-else mode="flat" @click="switchAuthMode">
-                Login instead
+                转至登录
               </base-button>
             </transition>
             <transition name="btn" mode="out-in">
-              <base-button v-if="mode === 'signup'">Signup</base-button>
+              <base-button v-if="mode === 'signup'">注册</base-button>
               <base-button v-else mode="flat" @click="switchAuthMode">
-                Signup instead
+                转至注册
               </base-button>
             </transition>
           </div>
@@ -55,19 +63,12 @@ export default {
     return {
       email: '',
       password: '',
+      username: '',
       formIsValid: true,
       mode: 'login',
       isLoading: false,
       error: null,
     };
-  },
-  computed: {
-    submitButtonCaption() {
-      return this.mode === 'login' ? 'login' : 'signup';
-    },
-    switchModeButtonCaption() {
-      return this.mode === 'login' ? 'Signup instead' : 'Login instead';
-    },
   },
   methods: {
     async submitForm() {
@@ -80,9 +81,15 @@ export default {
         return;
       }
 
+      if (this.mode === 'signup' && this.isEmpty(this.username)) {
+        this.formIsValid = false;
+        return;
+      }
+
       const actionPayload = {
         email: this.email,
         password: this.password,
+        username: this.username,
       };
 
       this.isLoading = true;
@@ -90,7 +97,7 @@ export default {
       try {
         await this.$store.dispatch(this.mode, actionPayload);
 
-        const redirectUrl = `/${this.$route.query.redirect || 'coaches'}`;
+        const redirectUrl = `/${this.$route.query.redirect ?? 'coaches'}`;
 
         this.$router.replace(redirectUrl);
       } catch (err) {

@@ -8,11 +8,12 @@
           </router-link>
         </h1>
         <ul>
+          <li v-if="isLoggedIn">您好，{{ username }}</li>
           <li>
             <base-button :to="{ name: 'coaches' }" link> Coaches </base-button>
           </li>
           <li v-if="isLoggedIn">
-            <base-button :to="{ name: 'requests' }" link>
+            <base-button link :to="{ name: 'requests' }">
               Requests
             </base-button>
           </li>
@@ -33,6 +34,9 @@ export default {
   computed: {
     isLoggedIn() {
       return this.$store.getters.isAuthenticated;
+    },
+    username() {
+      return this.$store.getters.username;
     },
   },
   methods: {

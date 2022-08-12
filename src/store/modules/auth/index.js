@@ -7,6 +7,7 @@ export default {
     return {
       userID: '',
       token: '',
+      username: '',
       didAutoLogout: false,
       authUrl: 'http://localhost:3000', // the server should be run first
       API_KEY: 'Jackie-loves-Candy', // for the auth
