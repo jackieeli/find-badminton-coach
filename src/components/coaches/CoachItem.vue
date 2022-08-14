@@ -13,9 +13,9 @@
       </div>
       <div class="actions">
         <base-button link :to="coachContactLink" mode="outline">
-          Contact
+          联系
         </base-button>
-        <base-button link :to="coachDetailsLink">View Details</base-button>
+        <base-button link :to="coachDetailsLink">查看细节</base-button>
       </div>
     </li>
   </base-card>
