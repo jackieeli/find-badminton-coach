@@ -42,55 +42,58 @@
     </div>
     <div class="form-control checkboxes" :class="styleInvalid(areas)">
       <h3>精通领域</h3>
-      <div>
-        <input
-          type="checkbox"
-          id="single"
-          value="single"
-          v-model="areas.val"
-          @blur="clearValidity(areas)"
-        />
-        <label for="single">单打</label>
-      </div>
-      <div>
-        <input
-          type="checkbox"
-          id="double"
-          value="double"
-          v-model="areas.val"
-          @blur="clearValidity(areas)"
-        />
-        <label for="double">双打</label>
-      </div>
-      <div>
-        <input
-          type="checkbox"
-          id="beginner"
-          value="beginner"
-          v-model="areas.val"
-          @blur="clearValidity(areas)"
-        />
-        <label for="beginner">初级</label>
-      </div>
-      <div>
-        <input
-          type="checkbox"
-          id="intermediate"
-          value="intermediate"
-          v-model="areas.val"
-          @blur="clearValidity(areas)"
-        />
-        <label for="intermediate">中级</label>
-      </div>
-      <div>
-        <input
-          type="checkbox"
-          id="advanced"
-          value="advanced"
-          v-model="areas.val"
-          @blur="clearValidity(areas)"
-        />
-        <label for="advanced">高级</label>
+      <!-- tailwindcss -->
+      <div class="flex gap-2">
+        <div class="hover:bg-indigo-400">
+          <input
+            type="checkbox"
+            id="single"
+            value="single"
+            v-model="areas.val"
+            @blur="clearValidity(areas)"
+          />
+          <label for="single">单打</label>
+        </div>
+        <div class="hover:bg-indigo-400">
+          <input
+            type="checkbox"
+            id="double"
+            value="double"
+            v-model="areas.val"
+            @blur="clearValidity(areas)"
+          />
+          <label for="double">双打</label>
+        </div>
+        <div class="hover:bg-indigo-400">
+          <input
+            type="checkbox"
+            id="beginner"
+            value="beginner"
+            v-model="areas.val"
+            @blur="clearValidity(areas)"
+          />
+          <label for="beginner">初级</label>
+        </div>
+        <div class="hover:bg-indigo-400">
+          <input
+            type="checkbox"
+            id="intermediate"
+            value="intermediate"
+            v-model="areas.val"
+            @blur="clearValidity(areas)"
+          />
+          <label for="intermediate">中级</label>
+        </div>
+        <div class="hover:bg-indigo-400">
+          <input
+            type="checkbox"
+            id="advanced"
+            value="advanced"
+            v-model="areas.val"
+            @blur="clearValidity(areas)"
+          />
+          <label for="advanced">高级</label>
+        </div>
       </div>
       <p v-if="!areas.isValid">需要至少选择一个领域</p>
     </div>
@@ -182,6 +185,10 @@ export default {
       return { invalid: !value.isValid };
     },
   },
+  mounted() {
+    this.firstName.val = this.$store.getters.username.split(' ')[0];
+    this.lastName.val = this.$store.getters.username.split(' ')[1];
+  },
 };
 </script>
 
@@ -265,6 +272,6 @@ p {
 }
 
 .submit-btn {
-  margin-top: 2rem;
+  /* margin-top: 1rem; */
 }
 </style>

@@ -13,7 +13,7 @@ const field = ref(props.field as string);
 
 const fieldCHN = computed(() => {
   let x = '';
-  switch (field.value.toLowerCase()) {
+  switch (field.value && field.value.toLowerCase()) {
     case 'single':
       x = '单打';
       break;

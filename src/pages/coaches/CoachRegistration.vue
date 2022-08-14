@@ -1,7 +1,7 @@
 <template>
   <section class="row">
     <base-card mode="shadow" color="color">
-      <h2>Register as a coach now!</h2>
+      <h2>快注册成为一名教练吧～</h2>
       <CoachForm @save-data="saveData" />
     </base-card>
   </section>
